@@ -117,7 +117,7 @@ namespace MaxsuAIProcessFixNamespace
 			{
 				_FATALERROR("Abnormal! AI updating procecure broken in saving! Please report to the mod authour! (MaxsuAIProcessFix.DLL)");
 				
-				MessageBox(NULL, "Abnormal! Caught a fatal error during saving! Please report to the mod author!", "Error Occured: MaxsuAIProcessFix.DLL", MB_OK | MB_ICONHAND);
+				MessageBox(NULL, L"Abnormal! Caught a fatal error during saving! Please report to the mod author!", L"Error Occured: MaxsuAIProcessFix.DLL", MB_OK | MB_ICONHAND);
 
 				abort();
 			}

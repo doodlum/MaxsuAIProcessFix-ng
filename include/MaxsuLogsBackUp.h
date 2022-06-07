@@ -26,7 +26,7 @@ namespace MaxsuLogsBackUpNamespace
 
 		if (result != S_OK)
 		{
-			return 0;
+			return "0";
 		}
 
 		std::unique_ptr<wchar_t[], decltype(&CoTaskMemFree)> path(pathBuffer, CoTaskMemFree);

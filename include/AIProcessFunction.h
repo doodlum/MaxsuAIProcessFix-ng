@@ -42,7 +42,7 @@ namespace MaxsuAIProcessFixNamespace
 
 	static inline bool IsUpdatableNPC(const RE::Actor* thisactor)
 	{
-		return (thisactor && !thisactor->IsInCombat() && !thisactor->IsDead(false) && thisactor->IsPersistent() &&\
+		return (thisactor && !thisactor->IsInCombat() && !thisactor->IsDead(false) && (thisactor->formFlags & RE::TESForm::RecordFlags::kPersistent) != 0 &&\
 			   !thisactor->IsDisabled() && !thisactor->IsMarkedForDeletion()&& !thisactor->IsDeleted() && thisactor->CalculateCachedOwnerIsNPC() && !thisactor->IsDynamicForm() && thisactor->currentProcess);
 	}
 //------------------------------------------------------------------------------------------------------------	

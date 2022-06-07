@@ -2,6 +2,7 @@
 #include "AIProcessData.h"
 #include "AIProcessFunction.h"
 
+
 namespace MaxsuAIProcessFixNamespace
 {
 
@@ -128,7 +129,8 @@ namespace MaxsuAIProcessFixNamespace
 					continue;
 				}
 
-				thisactor->MoveToPackageLocation();
+				MoveToPackageLocation(thisactor);
+				
 
 				thisactor->UpdateActor3DPosition();
 

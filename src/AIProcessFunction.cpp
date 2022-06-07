@@ -54,8 +54,8 @@ namespace MaxsuAIProcessFixNamespace
 			return false;
 		}
 
-		if (thisactor->MoveToRef(targMarker))
-			_DMESSAGE("Move Actor to Editor Location!");
+		thisactor->MoveTo(targMarker);
+		_DMESSAGE("Move Actor to Editor Location!");
 
 		return true;
 
@@ -77,7 +77,7 @@ namespace MaxsuAIProcessFixNamespace
 			return false;
 		}
 
-		if (!thisactor->IsPersistent())
+		if (!(thisactor->formFlags & RE::TESForm::RecordFlags::kPersistent) != 0)
 		{
 			_DMESSAGE("Actor is Not Persistent!");
 			return false;
@@ -137,7 +137,7 @@ namespace MaxsuAIProcessFixNamespace
 		}
 
 		if (!MoveToEditorLocation(thisactor)) {
-			if (thisactor->MoveToNearestNavmesh(100.f))
+			if (MoveToNearestNavmesh(thisactor, 100.f))
 				_DMESSAGE("Move Actor To Nearest Navemesh Position!");
 			else {
 				_DMESSAGE("Fail To Reset Actor AI State!");
@@ -164,7 +164,7 @@ namespace MaxsuAIProcessFixNamespace
 		{
 			_DMESSAGE("Updating a Actor!");
 
-			thisactor->MoveToPackageLocation();
+			MoveToPackageLocation(thisactor);
 
 			thisactor->UpdateActor3DPosition();
 
@@ -191,7 +191,7 @@ namespace MaxsuAIProcessFixNamespace
 			return false;
 		}
 
-		if (!thisactor->IsPersistent())
+		if (!(thisactor->formFlags & RE::TESForm::RecordFlags::kPersistent) != 0)
 		{
 			_DMESSAGE("Actor is Not Persistent!");
 			return false;
@@ -259,7 +259,7 @@ namespace MaxsuAIProcessFixNamespace
 			return false;
 		}
 
-		thisactor->MoveToPackageLocation();
+		MoveToPackageLocation(thisactor, false);
 
 		_DMESSAGE("Update Actor To Pos!");
 

@@ -18,7 +18,7 @@ namespace MaxsuAIProcessFixNamespace
 		static_assert(std::is_same_v<Event, RE::TESWaitStartEvent> || std::is_same_v<Event, RE::TESSleepStartEvent>, "Template Class SleepWaitStartHandle DataType Wrong!");
 
 	public:
-		virtual EventResult ProcessEvent(const Event* a_event, RE::BSTEventSource<Event>* a_eventSource)
+		virtual EventResult ProcessEvent(const Event*, RE::BSTEventSource<Event>*)
 		{
 			_DMESSAGE("%s Start", this->EventName);
 
@@ -94,7 +94,7 @@ namespace MaxsuAIProcessFixNamespace
 		static_assert(std::is_same_v<Event, RE::TESWaitStopEvent> || std::is_same_v<Event, RE::TESSleepStopEvent>, "Template Class SleepWaitStopHandle DataType Wrong!");
 
 	public:
-		virtual EventResult ProcessEvent(const Event* a_event, RE::BSTEventSource<Event>* a_eventSource)
+		virtual EventResult ProcessEvent(const Event*, RE::BSTEventSource<Event>* a_eventSource)
 		{
 			_DMESSAGE("%s Finish", this->EventName);
 
