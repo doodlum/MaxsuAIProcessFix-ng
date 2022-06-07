@@ -1,0 +1,30 @@
+#include "RE/BSExtraData/ExtraAliasInstanceArray.h"
+
+#include "RE/Memory/MemoryManager.h"
+
+
+namespace RE
+{
+	ExtraAliasInstanceArray::ExtraAliasInstanceArray() :
+		BSExtraData(),
+		aliases(),
+		lock()
+	{
+		REL::Offset<std::uintptr_t> vtbl(Offset::ExtraAliasInstanceArray::Vtbl);
+		((std::uintptr_t*)this)[0] = vtbl.address();
+	}
+
+
+	ExtraAliasInstanceArray::~ExtraAliasInstanceArray()
+	{
+		for (auto& alias : aliases) {
+			free(alias);
+		}
+	}
+
+
+	ExtraDataType ExtraAliasInstanceArray::GetType() const
+	{
+		return ExtraDataType::kAliasInstanceArray;
+	}
+}
