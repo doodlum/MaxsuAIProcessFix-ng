@@ -1,4 +1,3 @@
-#pragma once
 
 float GetDistance3D(RE::NiPoint3* a_ni, const RE::NiPoint3& pos2)
 {
@@ -60,4 +59,22 @@ bool MoveToNearestNavmesh(RE::TESObjectREFR* a_ref, const float minimum_offset)
 	MoveTo_ImplMax(a_ref, a_ref->AsReference()->CreateRefHandle(), a_ref->GetParentCell(), a_ref->GetWorldspace(), std::move(*nearestVertex), a_ref->GetAngle());
 
 	return true;
+}
+
+bool MoveToRef(RE::TESObjectREFR* a_actor, RE::TESObjectREFR* a_target)
+{
+	assert(a_target);
+	auto handle = a_actor->CreateRefHandle();
+	MoveTo_ImplMax(a_actor, handle, a_target->GetParentCell(), a_target->GetWorldspace(), a_target->GetPosition(), a_target->GetAngle());
+	return true;
+}
+
+bool IsPersistent(RE::TESObjectREFR* a_ref)
+{
+	return (a_ref->formFlags & RE::TESForm::RecordFlags::kPersistent) != 0;
+}
+
+bool IsPersistent(const RE::TESObjectREFR* a_ref)
+{
+	return (a_ref->formFlags & RE::TESForm::RecordFlags::kPersistent) != 0;
 }

@@ -54,7 +54,7 @@ namespace MaxsuAIProcessFixNamespace
 			return false;
 		}
 
-		thisactor->MoveTo(targMarker);
+		MoveToRef(thisactor, targMarker);
 		_DMESSAGE("Move Actor to Editor Location!");
 
 		return true;
@@ -77,7 +77,7 @@ namespace MaxsuAIProcessFixNamespace
 			return false;
 		}
 
-		if (!(thisactor->formFlags & RE::TESForm::RecordFlags::kPersistent) != 0)
+		if (!IsPersistent(thisactor))
 		{
 			_DMESSAGE("Actor is Not Persistent!");
 			return false;
@@ -191,7 +191,7 @@ namespace MaxsuAIProcessFixNamespace
 			return false;
 		}
 
-		if (!(thisactor->formFlags & RE::TESForm::RecordFlags::kPersistent) != 0)
+		if (!IsPersistent(thisactor))
 		{
 			_DMESSAGE("Actor is Not Persistent!");
 			return false;
