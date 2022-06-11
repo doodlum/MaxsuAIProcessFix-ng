@@ -129,7 +129,7 @@ namespace MaxsuAIProcessFixNamespace
 			cur_packgeID = cur_package->formID;
 
 
-		_DMESSAGE("current AI Package ID is %x, Last AI Pakcage ID is %x", cur_packgeID, LastPackageID);
+		_DMESSAGE("current AI Package ID is {}, Last AI Pakcage ID is {}", cur_packgeID, LastPackageID);
 
 		if (cur_packgeID == LastPackageID) {
 			_DMESSAGE("Actor AI Package remain the same, Skip Position Update!");

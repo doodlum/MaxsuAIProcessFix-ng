@@ -20,7 +20,7 @@ namespace MaxsuAIProcessFixNamespace
 	public:
 		virtual EventResult ProcessEvent(const Event*, RE::BSTEventSource<Event>*)
 		{
-			_DMESSAGE("%s Start", this->EventName);
+			_DMESSAGE("{} Start", this->EventName);
 
 			EventsGuard::SetWaitSleepStartFlag(true);
 
@@ -40,10 +40,10 @@ namespace MaxsuAIProcessFixNamespace
 
 			a_datahandler->SetLastRecordTime(thiscalendar->GetCurrentGameTime());
 
-			_DMESSAGE("Last Record Time is %f", a_datahandler->GetLastRecordTime());
+			_DMESSAGE("Last Record Time is {}", a_datahandler->GetLastRecordTime());
 
 			if (a_datahandler->GetActorsMapSize() > 0) {
-				_ERROR("Abnormality! AI updating procecure broken in %s start!", this->EventName);
+				_ERROR("Abnormality! AI updating procecure broken in {} start!", this->EventName);
 				return EventResult::kContinue;
 			}
 
@@ -51,7 +51,7 @@ namespace MaxsuAIProcessFixNamespace
 				GetLoadActors();
 				MoveAttachEventHandler::RegisterSink();
 			} else {
-				_ERROR("Abnormality! Not Update Ready in %s start!", this->EventName);
+				_ERROR("Abnormality! Not Update Ready in {} start!", this->EventName);
 				return EventResult::kContinue;
 			}
 
@@ -69,7 +69,7 @@ namespace MaxsuAIProcessFixNamespace
 
 			static SleepWaitStartHandle<Event> SWStart_handler(EventName);
 			ScriptHolder->AddEventSink(&SWStart_handler);
-			_MESSAGE(("Register %sStart Event Sink!"), SWStart_handler.EventName.c_str());
+			_MESSAGE(("Register {}Start Event Sink!"), SWStart_handler.EventName.c_str());
 		}
 
 		void GetLoadActors()
@@ -96,7 +96,7 @@ namespace MaxsuAIProcessFixNamespace
 	public:
 		virtual EventResult ProcessEvent(const Event*, RE::BSTEventSource<Event>* a_eventSource)
 		{
-			_DMESSAGE("%s Finish", this->EventName);
+			_DMESSAGE("{} Finish", this->EventName);
 
 			EventsGuard::SetWaitSleepStartFlag(false);
 
@@ -125,9 +125,9 @@ namespace MaxsuAIProcessFixNamespace
 
 			auto lasting_time = thiscalendar->GetCurrentGameTime() - a_datahandler->GetLastRecordTime();
 
-			_MESSAGE("Last Record Time is %f, Current Game Time is %f", a_datahandler->GetLastRecordTime(), thiscalendar->GetCurrentGameTime());
+			_MESSAGE("Last Record Time is {}, Current Game Time is {}", a_datahandler->GetLastRecordTime(), thiscalendar->GetCurrentGameTime());
 
-			_MESSAGE("%s Lasting Time is %f", this->EventName, lasting_time);
+			_MESSAGE("{} Lasting Time is {}", this->EventName, lasting_time);
 
 			if (EventsGuard::getIsUpdateReady() /* && UIhandler->GameIsPaused()*/) {
 				EventsGuard::SetsUpdateReadyFlag(false);
@@ -151,7 +151,7 @@ namespace MaxsuAIProcessFixNamespace
 
 				EventsGuard::SetsUpdateReadyFlag(true);
 
-				_ERROR(("Abnormality! AI updating procecure broken in %s stop!"), this->EventName);
+				_ERROR(("Abnormality! AI updating procecure broken in {} stop!"), this->EventName);
 			}
 
 			a_datahandler->SetLastRecordTime(thiscalendar->GetCurrentGameTime());
@@ -173,7 +173,7 @@ namespace MaxsuAIProcessFixNamespace
 
 			ScriptHolder->AddEventSink(&SWStop_handler);
 
-			_MESSAGE(("Register %sStop Event Sink!"), SWStop_handler.EventName.c_str());
+			_MESSAGE(("Register {}Stop Event Sink!"), SWStop_handler.EventName.c_str());
 		}
 
 	private:
