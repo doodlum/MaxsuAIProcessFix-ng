@@ -15,7 +15,7 @@ namespace MaxsuAIProcessFixNamespace
 
 		if (thiscalendar)
 		{
-			_DMESSAGE("Fast Travel End Time is %f", thiscalendar->GetCurrentGameTime());
+			_DMESSAGE("Fast Travel End Time is {}", thiscalendar->GetCurrentGameTime());
 		}
 		else
 		{
@@ -64,7 +64,7 @@ namespace MaxsuAIProcessFixNamespace
 
 		auto LoadActorNums = processLists->numberHighActors;
 
-		_DMESSAGE("High Process Actor Nums = %d", LoadActorNums);
+		_DMESSAGE("High Process Actor Nums = {}", LoadActorNums);
 
 		if (LoadActorNums == 0)
 		{
@@ -90,7 +90,7 @@ namespace MaxsuAIProcessFixNamespace
 
 			if (IsUpdatableNPC(thisactor))
 			{
-				_DMESSAGE("Find a actor name %s, ID %x", thisactor->GetName(), thisactor->formID);
+				_DMESSAGE("Find a actor name {}, ID {}", thisactor->GetName(), thisactor->formID);
 
 				if (!thisactor->Is3DLoaded())
 				{
@@ -130,7 +130,7 @@ namespace MaxsuAIProcessFixNamespace
 				}
 
 				MoveToPackageLocation(thisactor);
-				
+
 
 				thisactor->UpdateActor3DPosition();
 
@@ -144,10 +144,10 @@ namespace MaxsuAIProcessFixNamespace
 
 		for (auto thispair : UpdatedActorsIDMap)
 		{
-			_DMESSAGE("Successfully Update a actor ID %x, Name %s", thispair.first, thispair.second);
+			_DMESSAGE("Successfully Update a actor ID {:x}, Name {}", thispair.first, thispair.second);
 		}
 
-		_DMESSAGE("Update %d Actor in Total!", update_actor_nums);
+		_DMESSAGE("Update {} Actor in Total!", update_actor_nums);
 	}
 
 
@@ -180,7 +180,7 @@ namespace MaxsuAIProcessFixNamespace
 
 				a_datahandler->SetLastRecordTime(thiscalendar->GetCurrentGameTime());
 
-				_DMESSAGE("Last Record Time is %f", a_datahandler->GetLastRecordTime());
+				_DMESSAGE("Last Record Time is {}", a_datahandler->GetLastRecordTime());
 
 				_DMESSAGE("Map Menu Close!");
 
@@ -192,7 +192,7 @@ namespace MaxsuAIProcessFixNamespace
 	}
 
 
-	
+
 
 
 }

@@ -27,7 +27,7 @@ namespace MaxsuAIProcessFixNamespace
 
 		if (!thismod)
 		{
-			//_DMESSAGE("Not mod %s Found!", modname);
+			//_DMESSAGE("Not mod {} Found!", modname);
 			return false;
 		}
 
@@ -45,7 +45,7 @@ namespace MaxsuAIProcessFixNamespace
 		return (thisactor && !thisactor->IsInCombat() && !thisactor->IsDead(false) && IsPersistent(thisactor) &&\
 			   !thisactor->IsDisabled() && !thisactor->IsMarkedForDeletion()&& !thisactor->IsDeleted() && thisactor->CalculateCachedOwnerIsNPC() && !thisactor->IsDynamicForm() && thisactor->currentProcess);
 	}
-//------------------------------------------------------------------------------------------------------------	
-	
+//------------------------------------------------------------------------------------------------------------
+
 
 }

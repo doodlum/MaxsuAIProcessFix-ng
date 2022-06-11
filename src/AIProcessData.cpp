@@ -19,7 +19,7 @@ namespace MaxsuAIProcessFixNamespace
 
 			min_trigger_hours = get_trigger_hours;
 
-			_MESSAGE("Set Minimum Trigger Hours to %d from INI", min_trigger_hours);
+			_MESSAGE("Set Minimum Trigger Hours to {} from INI", min_trigger_hours);
 		}
 		else
 		{
@@ -77,7 +77,7 @@ namespace MaxsuAIProcessFixNamespace
 			_MESSAGE("Can't get correct EnableUpdateAfterFastTravel setting from INI");
 		}
 	//----------------------------------------------------------------------------------------------------------------------------------------------
-	
+
 
 
 	//------------------------------------Enable Update for Mod Added NPCs-------------------------------------------------------------------------
@@ -103,7 +103,7 @@ namespace MaxsuAIProcessFixNamespace
 
 		GetPrivateProfileStringA("ModName", "CurrentAIModName", "None", CurrentAIModName, sizeof(CurrentAIModName), PATCHFILE_PATH);
 
-		_MESSAGE("Get AI Overhaul Mod Name is : %s", CurrentAIModName);
+		_MESSAGE("Get AI Overhaul Mod Name is : {}", CurrentAIModName);
 
 	//----------------------------------------------------------------------------------------------------------------------------------------------
 		//ActorsArray.reserve(actor_arryas_cap);
@@ -129,7 +129,7 @@ namespace MaxsuAIProcessFixNamespace
 
 		auto LoadActorNums = processLists->numberHighActors;
 
-		_DMESSAGE("High Process Actor Nums = %d", LoadActorNums);
+		_DMESSAGE("High Process Actor Nums = {}", LoadActorNums);
 
 		if (LoadActorNums == 0)
 		{
@@ -164,16 +164,16 @@ namespace MaxsuAIProcessFixNamespace
 				{
 					ActorsMap.emplace(thisactor->GetFormID(), std::make_shared<ActorAIProData>(thispackage->formID,true));
 
-					_DMESSAGE("ActorMap Size is %d", ActorsMap.size());
+					_DMESSAGE("ActorMap Size is {}", ActorsMap.size());
 
-					_DMESSAGE("Add a Loaded actor ID %x, Name %s", thisactor->formID, thisactor->GetName());
+					_DMESSAGE("Add a Loaded actor ID {:x}, Name {}"sv, thisactor->GetFormID(), thisactor->GetName());
 
 					update_actornums++;
 				}
 			}
 		}
 
-		_DMESSAGE("Find %d Loaded actors to update in total", update_actornums);
+		_DMESSAGE("Find {} Loaded actors to update in total", update_actornums);
 	}
 
 
@@ -189,9 +189,9 @@ namespace MaxsuAIProcessFixNamespace
 				{
 					ActorsMap.emplace(thisactor->GetFormID(), std::make_shared<ActorAIProData>(thispackage->formID, false));
 
-					_DMESSAGE("ActorMap Size is %d", ActorsMap.size());
+					_DMESSAGE("ActorMap Size is {}", ActorsMap.size());
 
-					_DMESSAGE("Add a LaterIn actor ID %x, Name %s", thisactor->formID, thisactor->GetName());
+					_DMESSAGE("Add a LaterIn actor ID {:x}, Name {}", thisactor->formID, thisactor->GetName());
 				}
 			}
 		}
@@ -218,17 +218,17 @@ namespace MaxsuAIProcessFixNamespace
 
 			if (thisactor)
 			{
-				_DMESSAGE("Find a actor ID %x, Name %s", thisactor->formID, thisactor->GetName());
+				_DMESSAGE("Find a actor ID {:x}, Name {}", thisactor->formID, thisactor->GetName());
 
 				if (UpdateActorFunc::UpdatethisActorPos(thisactor, a_it->second->PackageId, a_it->second->IsLoaded))
 				{
-					_DMESSAGE("Update actor ID %x, Name %s", thisactor->formID, thisactor->GetName());
+					_DMESSAGE("Update actor ID {:x}, Name {}", thisactor->formID, thisactor->GetName());
 					update_actornums++;
 					UpdatedActorsIDMap.emplace(thisactor->formID, thisactor->GetName());
 				}
 				else
 				{
-					_DMESSAGE("Fail to Update actor ID %x, Name %s", thisactor->formID, thisactor->GetName());
+					_DMESSAGE("Fail to Update actor ID {:x}, Name {}", thisactor->formID, thisactor->GetName());
 				}
 			}
 			else
@@ -241,10 +241,10 @@ namespace MaxsuAIProcessFixNamespace
 
 		for (auto thispair : UpdatedActorsIDMap)
 		{
-			_DMESSAGE("Successfully Update a actor ID %x, Name %s", thispair.first, thispair.second);
+			_DMESSAGE("Successfully Update a actor ID {:x}, Name {}", thispair.first, thispair.second);
 		}
 
-		_DMESSAGE("Update %d actors in total", update_actornums);
+		_DMESSAGE("Update {} actors in total", update_actornums);
 	}
 
 }
