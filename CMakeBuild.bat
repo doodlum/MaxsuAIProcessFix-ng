@@ -8,6 +8,7 @@ cmake --build build/skyrim --config Release
 if %ERRORLEVEL% NEQ 0 exit 1
 
 xcopy "build\skyrim\release\*.dll" "dist\SKSE\Plugins\" /I /Y
+xcopy "build\skyrim\release\*.pdb" "dist\SKSE\Plugins\" /I /Y
 
 xcopy "package" "dist" /I /Y /E
 
