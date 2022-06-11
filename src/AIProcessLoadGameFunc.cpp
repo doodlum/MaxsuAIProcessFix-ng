@@ -70,7 +70,7 @@ namespace MaxsuAIProcessFixNamespace
 				_MESSAGE("Register Sleep Start Stop Event");
 			}
 
-			if (ai_handler->IsEnableUpdateAfterFastTravel())
+			if (ai_handler->IsEnableUpdateAfterFastTravel() && !REL::Module::IsVR)
 			{
 				ScriptEventSource->AddEventSink(&g_fasttravelhandler);
 				_MESSAGE("Register Fast Travel Event");
