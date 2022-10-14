@@ -1,9 +1,4 @@
 #include "AIProcessLoadGameFunc.h"
-#include "MaxsuLogsBackUp.h"
-
-#define LOG_PATH L"\\My Games\\Skyrim Special Edition\\SKSE\\MaxsuAIProcessFix.log"
-
-static const unsigned int backupfiles_num = 3;
 
 void Init()
 {
@@ -21,7 +16,6 @@ void Init()
 	}
 
 #endif
-
 
 	auto g_message = SKSE::GetMessagingInterface();
 
