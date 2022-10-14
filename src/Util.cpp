@@ -8,11 +8,11 @@ std::optional<RE::NiPoint3> FindNearestVertex(RE::TESObjectREFR* a_ref, const fl
 {
 	auto cell = a_ref->GetParentCell();
 
-	if (!cell || !cell->navMeshes) {
+	if (!cell || !cell->GetRuntimeData().navMeshes) {
 		return std::nullopt;
 	}
 
-	auto& navMeshes = *cell->navMeshes;
+	auto& navMeshes = *cell->GetRuntimeData().navMeshes;
 
 	auto shortestDistance = FLT_MAX;
 

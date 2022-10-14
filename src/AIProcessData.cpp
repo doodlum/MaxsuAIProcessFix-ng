@@ -158,7 +158,7 @@ namespace MaxsuAIProcessFixNamespace
 
 			if (IsUpdatableNPC(thisactor))
 			{
-				auto thispackage = thisactor->currentProcess->currentPackage.package;
+				auto thispackage = thisactor->GetActorRuntimeData().currentProcess->currentPackage.package;
 
 				if (thispackage)
 				{
@@ -183,7 +183,7 @@ namespace MaxsuAIProcessFixNamespace
 		{
 			if (ActorsMap.count(thisactor->formID) == 0)
 			{
-				auto thispackage = thisactor->currentProcess->currentPackage.package;
+				auto thispackage = thisactor->GetActorRuntimeData().currentProcess->currentPackage.package;
 
 				if (thispackage)
 				{

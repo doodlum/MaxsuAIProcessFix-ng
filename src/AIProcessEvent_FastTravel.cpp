@@ -123,7 +123,7 @@ namespace MaxsuAIProcessFixNamespace
 					continue;
 				}
 
-				if (thisactor->IsFlying())
+				if (thisactor->AsActorState()->IsFlying())
 				{
 					_DMESSAGE("Actor is flying!");
 					continue;

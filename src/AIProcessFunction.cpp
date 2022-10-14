@@ -29,7 +29,7 @@ namespace MaxsuAIProcessFixNamespace
 			return false;
 		}
 
-		auto thisEditorLoc = thisactor->editorLocation;
+		auto thisEditorLoc = thisactor->GetActorRuntimeData().editorLocation;
 
 		if (!thisEditorLoc)
 		{
@@ -96,7 +96,7 @@ namespace MaxsuAIProcessFixNamespace
 
 		}
 
-		auto cur_process = thisactor->currentProcess;
+		auto cur_process = thisactor->GetActorRuntimeData().currentProcess;
 
 		if (!cur_process)
 		{
@@ -153,14 +153,14 @@ namespace MaxsuAIProcessFixNamespace
 			return false;
 		}
 
-		if (thisactor->IsFlying())
+		if (thisactor->AsActorState()->IsFlying())
 		{
 			_DMESSAGE("Actor is flying!");
 			return false;
 
 		}
 
-		if (thisactor->GetSitSleepState() == RE::SIT_SLEEP_STATE::kNormal)		//	Actor is Standing
+		if (thisactor->AsActorState()->GetSitSleepState() == RE::SIT_SLEEP_STATE::kNormal)  //	Actor is Standing
 		{
 			_DMESSAGE("Updating a Actor!");
 
@@ -210,7 +210,7 @@ namespace MaxsuAIProcessFixNamespace
 
 		}
 
-		auto cur_process = thisactor->currentProcess;
+		auto cur_process = thisactor->GetActorRuntimeData().currentProcess;
 
 		if (!cur_process)
 		{
@@ -253,7 +253,7 @@ namespace MaxsuAIProcessFixNamespace
 			return false;
 		}
 
-		if (thisactor->IsFlying())
+		if (thisactor->AsActorState()->IsFlying())
 		{
 			_DMESSAGE("Actor is flying!");
 			return false;
