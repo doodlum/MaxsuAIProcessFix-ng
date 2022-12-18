@@ -1,5 +1,6 @@
 #include "AIProcessData.h"
 #include "AIProcessFunction.h"
+#include "FormUtil.h"
 
 namespace MaxsuAIProcessFixNamespace
 {
@@ -16,7 +17,6 @@ namespace MaxsuAIProcessFixNamespace
 
 		if (2 <= get_trigger_hours && get_trigger_hours <= 6)
 		{
-
 			min_trigger_hours = get_trigger_hours;
 
 			_MESSAGE("Set Minimum Trigger Hours to {} from INI", min_trigger_hours);
@@ -166,7 +166,7 @@ namespace MaxsuAIProcessFixNamespace
 
 					_DMESSAGE("ActorMap Size is {}", ActorsMap.size());
 
-					_DMESSAGE("Add a Loaded actor ID {:x}, Name {}"sv, thisactor->GetFormID(), thisactor->GetName());
+					_DMESSAGE("Add a Loaded actor ID {}, Name {}", FormUtil::GetIdentifierFromForm(thisactor), thisactor->GetName());
 
 					update_actornums++;
 				}
@@ -191,7 +191,7 @@ namespace MaxsuAIProcessFixNamespace
 
 					_DMESSAGE("ActorMap Size is {}", ActorsMap.size());
 
-					_DMESSAGE("Add a LaterIn actor ID {:x}, Name {}", thisactor->formID, thisactor->GetName());
+					_DMESSAGE("Add a LaterIn actor ID {}, Name {}", FormUtil::GetIdentifierFromForm(thisactor), thisactor->GetName());
 				}
 			}
 		}
@@ -218,17 +218,17 @@ namespace MaxsuAIProcessFixNamespace
 
 			if (thisactor)
 			{
-				_DMESSAGE("Find a actor ID {:x}, Name {}", thisactor->formID, thisactor->GetName());
+				_DMESSAGE("Find a actor ID {}, Name {}", FormUtil::GetIdentifierFromForm(thisactor), thisactor->GetName());
 
 				if (UpdateActorFunc::UpdatethisActorPos(thisactor, a_it->second->PackageId, a_it->second->IsLoaded))
 				{
-					_DMESSAGE("Update actor ID {:x}, Name {}", thisactor->formID, thisactor->GetName());
+					_DMESSAGE("Update actor ID {}, Name {}", FormUtil::GetIdentifierFromForm(thisactor), thisactor->GetName());
 					update_actornums++;
 					UpdatedActorsIDMap.emplace(thisactor->formID, thisactor->GetName());
 				}
 				else
 				{
-					_DMESSAGE("Fail to Update actor ID {:x}, Name {}", thisactor->formID, thisactor->GetName());
+					_DMESSAGE("Fail to Update actor ID {}, Name {}", FormUtil::GetIdentifierFromForm(thisactor), thisactor->GetName());
 				}
 			}
 			else
@@ -241,7 +241,7 @@ namespace MaxsuAIProcessFixNamespace
 
 		for (auto thispair : UpdatedActorsIDMap)
 		{
-			_DMESSAGE("Successfully Update a actor ID {:x}, Name {}", thispair.first, thispair.second);
+			_DMESSAGE("Successfully Update a actor ID {}, Name {}", FormUtil::GetIdentifierFromFormID(thispair.first), thispair.second);
 		}
 
 		_DMESSAGE("Update {} actors in total", update_actornums);

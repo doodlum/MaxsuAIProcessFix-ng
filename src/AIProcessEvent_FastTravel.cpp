@@ -1,6 +1,7 @@
 #include "AIProcessEvent_FastTravel.h"
 #include "AIProcessData.h"
 #include "AIProcessFunction.h"
+#include "FormUtil.h"
 
 
 namespace MaxsuAIProcessFixNamespace
@@ -90,7 +91,7 @@ namespace MaxsuAIProcessFixNamespace
 
 			if (IsUpdatableNPC(thisactor))
 			{
-				_DMESSAGE("Find a actor name {}, ID {}", thisactor->GetName(), thisactor->formID);
+				_DMESSAGE("Find a actor name {}, ID {}", thisactor->GetName(), FormUtil::GetIdentifierFromForm(thisactor));
 
 				if (!thisactor->Is3DLoaded())
 				{
@@ -144,7 +145,7 @@ namespace MaxsuAIProcessFixNamespace
 
 		for (auto thispair : UpdatedActorsIDMap)
 		{
-			_DMESSAGE("Successfully Update a actor ID {:x}, Name {}", thispair.first, thispair.second);
+			_DMESSAGE("Successfully Update a actor ID {}, Name {}", FormUtil::GetIdentifierFromFormID(thispair.first), thispair.second);
 		}
 
 		_DMESSAGE("Update {} Actor in Total!", update_actor_nums);

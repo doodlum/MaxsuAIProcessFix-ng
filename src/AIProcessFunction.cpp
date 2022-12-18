@@ -1,5 +1,6 @@
 #include "AIProcessFunction.h"
 #include "AIProcessData.h"
+#include "FormUtil.h"
 
 
 namespace MaxsuAIProcessFixNamespace
@@ -129,7 +130,7 @@ namespace MaxsuAIProcessFixNamespace
 			cur_packgeID = cur_package->formID;
 
 
-		_DMESSAGE("current AI Package ID is {}, Last AI Pakcage ID is {}", cur_packgeID, LastPackageID);
+		_DMESSAGE("current AI Package ID is {}, Last AI Pakcage ID is {}", FormUtil::GetIdentifierFromFormID(cur_packgeID), FormUtil::GetIdentifierFromFormID(LastPackageID));
 
 		if (cur_packgeID == LastPackageID) {
 			_DMESSAGE("Actor AI Package remain the same, Skip Position Update!");
@@ -214,7 +215,7 @@ namespace MaxsuAIProcessFixNamespace
 
 		if (!cur_process)
 		{
-			_DMESSAGE("Current Pocess not found!");
+			_DMESSAGE("Current Process not found!");
 			return false;
 		}
 
